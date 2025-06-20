@@ -2,6 +2,7 @@
 
 import VideoUploadForm from "../components/VideoUploadForm";
 
+//Import the VideoUploadForm component to handle the video upload functionality
 export default function VideoUploadPage() {
   return (
     <div className="container mx-auto px-4 py-8">
