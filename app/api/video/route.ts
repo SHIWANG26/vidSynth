@@ -4,6 +4,7 @@ import Video, { IVideo } from "@/models/Video";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 
+// This file handles the API routes for video operations
 export async function GET() {
     try {
         connectToDatabase();
@@ -26,12 +27,12 @@ export async function POST(request: NextRequest) {
         const session = await getServerSession(authOptions);
         if (!session) {
             return NextResponse.json(
-                { error: "Unauthorized" },
+                { error: "Unauthorized access" },
                 { status: 401 }
             );
         }
         await connectToDatabase();
-
+        // Ensure the request body is in JSON format
         const body: IVideo = await request.json();
         if (!body.title || !body.description || !body.videoUrl || !body.thumbnailUrl) {
             return NextResponse.json(
